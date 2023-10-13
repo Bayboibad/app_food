@@ -1,14 +1,8 @@
 import 'package:app_food/home/home_screen.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
+import 'package:app_food/login/login.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(
-      DevicePreview(
-        enabled: !kReleaseMode,
-        builder: (context) => MyApp(), // Wrap your app
-      ),
-    );
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key); // Fixed this line
@@ -23,10 +17,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xffFF6D04)),
         // Removed useMaterial3 as it's not a valid property
       ),
-      home:  HomeScreen(), // Ensured content is not under the status bar
+      home: const Scaffold(
+        body: Padding(
+          padding: EdgeInsets.only(left: 5, right: 5, top: 25),
+          child: HomeScreen(),
+        ),
+      ), // Ensured content is not under the status bar
     );
   }
 }
-
-
-
